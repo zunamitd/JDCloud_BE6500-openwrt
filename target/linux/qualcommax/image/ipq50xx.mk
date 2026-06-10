@@ -8,7 +8,8 @@ define Device/jdcloud_be6500
   SUPPORTED_DEVICES := jdcloud,be6500
   DEVICE_PACKAGES := kmod-ath12k kmod-qca-nss-dp luci luci-ssl apk-mbedtls block-mount uboot-envtools e2fsprogs kmod-fs-ext4
   # FORCE FACTORY IMAGE
-  IMAGES += factory.bin
-  IMAGE/factory.bin := append-rootfs | pad-rootfs | pad-to 64k
+  IMAGES := sysupgrade.bin factory.bin
+  IMAGE/factory.bin := append-kernel | pad-to 0x700000 | append-rootfs
 endef
+
 TARGET_DEVICES += jdcloud_be6500
