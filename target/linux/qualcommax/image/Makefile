@@ -6,7 +6,6 @@ define Device/Default
 	KERNEL_LOADADDR := 0x41000000
 	DEVICE_DTS = $$(SOC)-$(lastword $(subst _, ,$(1)))
 	DEVICE_DTS_CONFIG := config@1
-	DEVICE_DTS_DIR := ../dts
 	IMAGES := sysupgrade.bin
 	IMAGE/sysupgrade.bin = sysupgrade-tar | append-metadata
 	IMAGE/sysupgrade.bin/squashfs :=
@@ -35,6 +34,9 @@ define Device/UbiFit
 	IMAGES += factory.ubi
 	IMAGE/factory.ubi := append-ubi
 endef
+
+TARGET_DEVICES += jdcloud_be6500
+
 
 include $(SUBTARGET).mk
 
