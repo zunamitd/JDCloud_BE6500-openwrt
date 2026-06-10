@@ -29,11 +29,6 @@ define Device/EmmcImage
 	IMAGE/sysupgrade.bin/squashfs := append-rootfs | pad-to 64k | sysupgrade-tar rootfs=$$$$@ | append-metadata
 endef
 
-define Device/UbiFit
-	KERNEL_IN_UBI := 1
-	IMAGES += factory.ubi
-	IMAGE/factory.ubi := append-ubi
-endef
 
 TARGET_DEVICES += jdcloud_be6500
 
